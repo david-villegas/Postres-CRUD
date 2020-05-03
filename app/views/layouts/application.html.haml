@@ -10,4 +10,6 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    #notice= render 'alerts/notice' if (flash[:notice])
+    #error= render 'alerts/alert' if (flash[:alert])
     = yield

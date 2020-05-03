@@ -1,0 +1,29 @@
+.container
+  .section.text-center
+    .container
+      %h3.jumbotron-heading
+        %p=@postre.name
+  .album.py-5.bg-light
+    .container
+      .row
+        .col-md-5
+          = image_tag (url_for(@postre.image)), alt: "#{@postre.name}", title: "#{@postre.name}", class: 'img-fluid'
+        .col-md-5
+          %strong Stock:
+          =@postre.stock
+          %br/
+          %strong Precio:
+          =@postre.price
+          %br/
+          %strong Fecha de Creación:
+          =@postre.created_at.strftime("%d/%m/%Y")
+          %br/
+          %strong Url:
+          =@postre.url
+    .container
+      .row
+        .col-md-4
+          %h3 Opciones
+          = link_to 'Editar', edit_dessert_path(@postre), class:"btn btn-primary"
+          = link_to 'Eliminar', @postre, method: :delete, data: {confirm: "Estas Seguro"}, class:"btn btn-danger"
+          = link_to 'Regresar', desserts_path, class:"btn btn-info"

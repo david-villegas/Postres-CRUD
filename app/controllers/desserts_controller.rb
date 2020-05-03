@@ -2,15 +2,22 @@ class DessertsController < ApplicationController
   before_action :set_dessert, only: [:show, :edit, :update, :destroy]
 
   def index
-
+    @postres = Dessert.all
   end
 
   def new
-
+    @postre = Dessert.new
   end
 
   def create
-
+    @postre = Dessert.new(dessert_params)
+    respond_to do |format|
+      if @postre.save
+        format.html {redirect_to dessert_path(@postre), notice: "Postre agregado correctamente"}
+      else
+        format.html {render :new, alert: "Falló el registro del postre, intente nuevamente"}
+      end
+    end
   end
 
   def show
@@ -22,17 +29,29 @@ class DessertsController < ApplicationController
   end
 
   def update
-
+    respond_to do |format|
+      if @postre.update(dessert_params)
+        format.html {redirect_to dessert_path(@postre), notice: "Postre Actualizado correctamente"}
+      else
+        format.html {render :edit, alert: "Falló la actualización del postre, intente nuevamente"}
+      end
+    end
   end
 
   def destroy
-
+    respond_to do |format|
+      if @postre.destroy
+        format.html {redirect_to desserts_path, notice: "Postre eliminado correctamente"}
+      else
+        format.html {redirect_to desserts_path, alert: "No fue posible eliminar el Postre"}
+      end
+    end
   end
 
   private
 
   def set_dessert
-
+    @postre = Dessert.find(params[:id])
   end
 
   def dessert_params

@@ -1,0 +1,37 @@
+.container
+  = form_with(model: postre, local: true) do |form|
+    -if postre.errors.any?
+      #error_explanation.alert.alert-danger.alert-dismissible.fade.show
+        %button.close{ 'data-dismiss': 'alert' }
+          %span x
+        %h2= "#{pluralize(postre.errors.count, "error")} al guardar el registro"
+        %ul
+          -postre.errors.full_messages.each do |message|
+            %li= message
+    .row
+      .col-md-12
+        .section.panel
+          .panel-body
+            .form-group
+              =form.label :name, 'Nombre del Postre:', class: "font-weight-bold"
+              =form.text_field :name, class:"form-control", placeholder: "Torta de Chocolate"
+            .form-group
+              =form.label :price, 'Precio:', class: "font-weight-bold"
+              =form.number_field :price, class: "form-control", placeholder: "4.50", step:"0.01"
+            .form-group
+              =form.label :stock, 'Stock:', class: "font-weight-bold"
+              =form.number_field :stock, class: "form-control", placeholder: "150"
+            .form-group
+              =form.label :url, 'URL:', class: "font-weight-bold"
+              =form.text_field :url, class: "form-control"
+            .form-group
+              =form.label :image, 'Imagen:', class: "font-weight-bold"
+              =form.file_field :image, class: "form-control-file"
+            .form-group
+              =form.submit 'Aceptar', class: "btn btn-info"
+              =link_to 'Cancelar', desserts_path, class: "btn btn-warning"
+            -if action_name == "edit"
+              .form-group
+                =form.label 'Imagen Actual:', class: "font-weight-bold"
+                %br/
+                =image_tag (url_for(postre.image)), class: "img-fluid"
