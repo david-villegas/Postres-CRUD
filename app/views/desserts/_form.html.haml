@@ -4,7 +4,7 @@
       #error_explanation.alert.alert-danger.alert-dismissible.fade.show
         %button.close{ 'data-dismiss': 'alert' }
           %span x
-        %h2= "#{pluralize(postre.errors.count, "error")} al guardar el registro"
+        %h4= "#{pluralize(postre.errors.count, "error")} al guardar el registro"
         %ul
           -postre.errors.full_messages.each do |message|
             %li= message
