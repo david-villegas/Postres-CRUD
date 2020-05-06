@@ -1,0 +1,54 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0", :name => "viewport"}/
+    %title Franmajo
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .container-fluid
+      .row.mt-3
+        .col-2
+          %table.table.table-striped.table-bordered.table-hover
+            %thead.text-center
+              %tr
+                %th Dashboard
+            %tbody
+              %tr
+                %td=link_to 'Postres', desserts_path
+              %tr
+                %td Opción 2
+              %tr
+                %td Opción 3
+              %tr
+                %td Opción 4
+              %tr
+                %td Opción 5
+              %tr
+                %td Opción 6
+              %tr
+                %td Opción 7
+              %tr
+                %td Opción 8
+              %tr
+                %td Opción 9
+              %tr
+                %td Opción 10
+        .col-10
+          %nav.navbar.navbar-light.bg-light.navbar-expand-lg
+            %a.navbar-brand(href="#") Navbar
+            %button.navbar-toggler{type:"button", "data-toggle":"collapse", "data-target":"#navbarNav", "aria-controls":"navbarNav", "aria-expanded":"false", "aria-label":"Toggle navigation"}
+              %span.navbar-toggler-icon
+            #navbarNav.collapse.navbar-collapse
+              %ul.navbar-nav
+                %li.nav-item.active
+                  %a.nav-link{href: root_path}Home
+                %li.nav-item
+                  %a.nav-link{href: "#"}Admin
+          #notice= render 'alerts/notice' if (flash[:notice])
+          #error= render 'alerts/alert' if (flash[:alert])
+          = yield

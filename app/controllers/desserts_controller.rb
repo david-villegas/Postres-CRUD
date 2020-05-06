@@ -1,8 +1,9 @@
 class DessertsController < ApplicationController
+  layout 'dessert'
   before_action :set_dessert, only: [:show, :edit, :update, :destroy]
 
   def index
-    @postres = Dessert.all
+    @postres = Dessert.paginate(page: params[:page], per_page: 5)
   end
 
   def new

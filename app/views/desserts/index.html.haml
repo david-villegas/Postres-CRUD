@@ -1,29 +1,31 @@
-.container
-  %h1.text-center Todos los Postres
+%h1.text-center.mt-3 Todos los Postres
 
-  .container.mb-3
-    = link_to 'Agregar', new_dessert_path, class:"btn btn-success"
-  .container
-    %table.table.table-striped.table-bordered.table-hover
-      %thead.text-center
+.container.mb-3.mt-3
+  = link_to 'Agregar', new_dessert_path, class:"btn btn-success"
+.container
+  %table.table.table-striped.table-bordered.table-hover
+    %thead.text-center
+      %tr
+        %th Nombre
+        %th Precio
+        %th Stock
+        %th Imagen
+        %th Acciones
+    %tbody.text-center
+      -@postres.each do |p|
         %tr
-          %th Nombre
-          %th Precio
-          %th Stock
-          %th Imagen
-          %th Acciones
-      %tbody.text-center
-        -@postres.each do |p|
-          %tr
-            %td.v-align-middle
-              =p.name
-            %td.v-align-middle
-              =p.price
-            %td.v-align-middle
-              =p.stock
-            %td.v-align-middle
-              = image_tag (url_for(p.image)), alt: "#{p.name}", title: "#{p.name}", class: 'img-fluid', width: '30'
-            %td.v-align-middle
-              = link_to 'Mostrar', p, class:"btn btn-dark"
-              = link_to 'Editar', edit_dessert_path(p), class:"btn btn-primary"
-              = link_to 'Eliminar', p, method: :delete, data: {confirm: "Estas Seguro"}, class:"btn btn-danger"
+          %td.v-align-middle
+            =p.name
+          %td.v-align-middle
+            =p.price
+          %td.v-align-middle
+            =p.stock
+          %td.v-align-middle
+            = image_tag (url_for(p.image)), alt: "#{p.name}", title: "#{p.name}", class: 'img-fluid', width: '30'
+          %td.v-align-middle
+            = link_to 'Mostrar', p, class:"btn btn-dark btn-sm"
+            = link_to 'Editar', edit_dessert_path(p), class:"btn btn-primary btn-sm"
+            = link_to 'Eliminar', p, method: :delete, data: {confirm: "Estas Seguro"}, class:"btn btn-danger btn-sm"
+  .container
+    .row.justify-content-center
+      = will_paginate @postres
