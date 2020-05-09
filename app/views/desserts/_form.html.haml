@@ -14,7 +14,7 @@
           .panel-body
             .form-group
               =form.label :name, 'Nombre del Postre:', class: "font-weight-bold"
-              =form.text_field :name, class:"form-control", placeholder: "Torta de Chocolate"
+              =form.text_field :name, class:"form-control", placeholder: "Torta de Chocolate", id:"nom"
             .form-group
               =form.label :price, 'Precio:', class: "font-weight-bold"
               =form.number_field :price, class: "form-control", placeholder: "4.50", step:"0.01"
@@ -23,10 +23,11 @@
               =form.number_field :stock, class: "form-control", placeholder: "150"
             .form-group
               =form.label :url, 'URL:', class: "font-weight-bold"
-              =form.text_field :url, class: "form-control"
+              %input{class: "form-control", id: "url", readonly:""}
+              =form.text_field :url, class: "form-control", id: "img", readonly:"", type: "hidden"
             .form-group
               =form.label :image, 'Imagen:', class: "font-weight-bold"
-              =form.file_field :image, class: "form-control-file"
+              =form.file_field :image, class: "form-control-file", id: "nimg"
             .form-group
               =form.submit 'Aceptar', class: "btn btn-info btn-sm"
               =link_to 'Cancelar', desserts_path, class: "btn btn-warning btn-sm"
