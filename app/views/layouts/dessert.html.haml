@@ -12,12 +12,12 @@
   %body
     .container-fluid
       .row.mt-3
-        .col-2
+        .col-sm-4.col-md-2
           %table.table.table-striped.table-bordered.table-hover
             %thead.text-center
               %tr
                 %th Dashboard
-            %tbody
+            %tbody.text-center
               %tr
                 %td=link_to 'Postres', desserts_path
               %tr
@@ -38,7 +38,7 @@
                 %td Opción 9
               %tr
                 %td Opción 10
-        .col-10
+        .col-sm-8.col-md-10
           %nav.navbar.navbar-light.bg-light.navbar-expand-lg
             %a.navbar-brand(href="#") Navbar
             %button.navbar-toggler{type:"button", "data-toggle":"collapse", "data-target":"#navbarNav", "aria-controls":"navbarNav", "aria-expanded":"false", "aria-label":"Toggle navigation"}
@@ -49,6 +49,8 @@
                   %a.nav-link{href: root_path}Home
                 %li.nav-item
                   %a.nav-link{href: "#"}Admin
+                %li.nav-item
+                  %a.nav-link{href: "#"}Registro
           #notice= render 'alerts/notice' if (flash[:notice])
           #error= render 'alerts/alert' if (flash[:alert])
           = yield
